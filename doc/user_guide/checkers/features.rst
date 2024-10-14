@@ -891,13 +891,15 @@ Refactoring checker Messages
   containing a continue statement. As such, it will warn when it encounters an
   else following a chain of ifs, all of them containing a continue statement.
 :no-else-raise (R1720): *Unnecessary "%s" after "raise", %s*
-  Used in order to highlight an unnecessary block of code following an if
-  containing a raise statement. As such, it will warn when it encounters an
-  else following a chain of ifs, all of them containing a raise statement.
+  Used in order to highlight an unnecessary block of code following an if, or a
+  try/except containing a raise statement. As such, it will warn when it
+  encounters an else following a chain of ifs, all of them containing a raise
+  statement.
 :no-else-return (R1705): *Unnecessary "%s" after "return", %s*
-  Used in order to highlight an unnecessary block of code following an if
-  containing a return statement. As such, it will warn when it encounters an
-  else following a chain of ifs, all of them containing a return statement.
+  Used in order to highlight an unnecessary block of code following an if, or a
+  try/except containing a return statement. As such, it will warn when it
+  encounters an else following a chain of ifs, all of them containing a return
+  statement.
 :unnecessary-dict-index-lookup (R1733): *Unnecessary dictionary index lookup, use '%s' instead*
   Emitted when iterating over the dictionary items (key-item pairs) and
   accessing the value by index lookup. The value can be accessed directly
@@ -918,16 +920,16 @@ Refactoring checker Messages
   Emitted when a single "return" or "return None" statement is found at the end
   of function or method definition. This statement can safely be removed
   because Python will implicitly return None
-:use-implicit-booleaness-not-comparison-to-string (C1804): *"%s" can be simplified to "%s", if it is striclty a string, as an empty string is falsey*
-  Empty string are considered false in a boolean context. Following this check
-  blindly in weakly typed code base can create hard to debug issues. If the
-  value can be something else that is falsey but not a string (for example
-  ``None``, an empty sequence, or ``0``) the code will not be equivalent.
 :use-implicit-booleaness-not-comparison (C1803): *"%s" can be simplified to "%s", if it is strictly a sequence, as an empty %s is falsey*
   Empty sequences are considered false in a boolean context. Following this
   check blindly in weakly typed code base can create hard to debug issues. If
   the value can be something else that is falsey but not a sequence (for
   example ``None``, an empty string, or ``0``) the code will not be equivalent.
+:use-implicit-booleaness-not-comparison-to-string (C1804): *"%s" can be simplified to "%s", if it is strictly a string, as an empty string is falsey*
+  Empty string are considered false in a boolean context. Following this check
+  blindly in weakly typed code base can create hard to debug issues. If the
+  value can be something else that is falsey but not a string (for example
+  ``None``, an empty sequence, or ``0``) the code will not be equivalent.
 :use-implicit-booleaness-not-comparison-to-zero (C1805): *"%s" can be simplified to "%s", if it is strictly an int, as 0 is falsey*
   0 is considered false in a boolean context. Following this check blindly in
   weakly typed code base can create hard to debug issues. If the value can be

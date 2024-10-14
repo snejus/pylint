@@ -30,12 +30,12 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        python-version: [3.9, "3.10", "3.11", "3.12", "3.13-dev"]
+        python-version: [3.9, "3.10", "3.11", "3.12", "3.13"]
     outputs:
       python-key: ${{ steps.generate-python-key.outputs.key }}
     steps:
       - name: Check out code from GitHub
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.1
       - name: Set up Python ${{ matrix.python-version }}
         id: python
         uses: actions/setup-python@v5.2.0
@@ -51,7 +51,7 @@ jobs:
           $GITHUB_OUTPUT
       - name: Restore Python virtual environment
         id: cache-venv
-        uses: actions/cache@v4.0.2
+        uses: actions/cache@v4.1.1
         with:
           path: venv
           key: >-
@@ -72,10 +72,10 @@ jobs:
     needs: prepare-tests-linux
     strategy:
       matrix:
-        python-version: [3.9, "3.10", "3.11", "3.12", "3.13-dev"]
+        python-version: [3.9, "3.10", "3.11", "3.12", "3.13"]
     steps:
       - name: Check out code from GitHub
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.1
       - name: Set up Python ${{ matrix.python-version }}
         id: python
         uses: actions/setup-python@v5.2.0
@@ -84,7 +84,7 @@ jobs:
           check-latest: true
       - name: Restore Python virtual environment
         id: cache-venv
-        uses: actions/cache@v4.0.2
+        uses: actions/cache@v4.1.1
         with:
           path: venv
           fail-on-cache-miss: true
